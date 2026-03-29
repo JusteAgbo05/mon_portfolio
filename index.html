@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="AGBO Juste">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Juste AGBO — Développeur Web</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- Fond animé -->
+  <div class="bg-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <!-- Navigation -->
+  <header class="topbar" id="topbar">
+    <div class="container nav">
+      <div class="brand">JA<span class="dot">.</span></div>
+      <nav id="mainNav">
+        <a href="#home" class="active">Accueil</a>
+        <a href="#about">À propos</a>
+        <a href="#projects">Projets</a>
+        <a href="#skills">Compétences</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-right">
+        <a href="https://github.com/JusteAgbo05" target="_blank" class="icon-link" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/juste-agbo" target="_blank" class="icon-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section id="home" class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text reveal">
+          <p class="hero__hello">👋 Bonjour, je suis</p>
+          <h1 class="hero__name">Juste <span class="accent">AGBO</span></h1>
+          <div class="hero__roles">
+            <span class="role-tag">Développeur Web</span>
+            <span class="role-sep">·</span>
+            <span class="role-tag">Étudiant en Hydrologie</span>
+          </div>
+          <p class="hero__desc">
+            Passionné par la création d'expériences web modernes. Du front-end au back-end, je conçois et développe des applications web fonctionnelles avec HTML, CSS, JavaScript, PHP et MySQL.
+          </p>
+          <div class="hero__ctas">
+            <a href="#projects" class="btn btn-accent">Voir mes projets <i class="fas fa-arrow-right"></i></a>
+            <a href="documents/CV_Juste_Agbo_2026.pdf" target="_blank" class="btn btn-ghost">Télécharger CV <i class="fas fa-download"></i></a>
+          </div>
+        </div>
+        <div class="hero__visual reveal-right">
+          <div class="hero__photo-wrap">
+            <img src="images/photo2.jpg" alt="Juste AGBO" class="hero__photo"/>
+            <div class="hero__photo-ring"></div>
+            <div class="hero__badge"><i class="fas fa-code"></i> Dev Web</div>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
+    </section>
+
+    <!-- ===== À PROPOS ===== -->
+    <section id="about" class="section">
+      <div class="container about">
+        <div class="about__photo reveal">
+          <div class="about__photo-frame">
+            <img src="images/image.jpg" alt="Photo de profil AGBO Juste"/>
+            <div class="about__deco"></div>
+          </div>
+        </div>
+        <div class="about__text reveal-right">
+          <p class="section-label">Qui suis-je ?</p>
+          <h2 class="section-title">À propos de moi</h2>
+          <p>Je m'appelle <strong>AGBO Juste</strong>, étudiant en hydrologie quantitative et développeur web en pleine progression. J'évolue entre deux univers complémentaires : la rigueur scientifique de l'hydrologie et la créativité du développement web.</p>
+          <p>Mon niveau a évolué : au-delà des bases (HTML, CSS, JavaScript), je maîtrise désormais la programmation côté serveur avec <strong>PHP</strong>, la gestion de bases de données avec <strong>MySQL</strong>, la manipulation du <strong>DOM et des API REST</strong> en JavaScript, ainsi que les CMS comme <strong>WordPress</strong>.</p>
+          <p>Chaque projet est une occasion de transformer des idées en solutions concrètes et utiles.</p>
+          <div class="about__stats">
+            <div class="stat">
+              <span class="stat-num">5+</span>
+              <span class="stat-label">Projets réalisés</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">6+</span>
+              <span class="stat-label">Mois d'expérience</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">6+</span>
+              <span class="stat-label">Technologies</span>
+            </div>
+          </div>
+          <a class="btn btn-accent" href="documents/CV_Juste_Agbo_2026.pdf" target="_blank" rel="noopener">Mon CV <i class="fas fa-external-link-alt"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJETS ===== -->
+    <section id="projects" class="section section-dark">
+      <div class="container">
+        <p class="section-label center">Ce que j'ai construit</p>
+        <h2 class="section-title center">Mes Projets</h2>
+        <div class="projects-grid">
+
+          <!-- Projet phare -->
+          <article class="project-card project-featured reveal">
+            <div class="project-card__body">
+              <div class="project-tag-row">
+                <span class="project-tag featured-tag">⭐ Projet phare</span>
+              </div>
+              <h3>Bibliothèque en Ligne</h3>
+              <p>Application web complète de gestion de bibliothèque : catalogue de livres, gestion des membres, système d'emprunts et retours. Développée avec PHP, MySQL et une interface dynamique en JavaScript.</p>
+              <div class="tech-stack">
+                <span class="tech">PHP</span>
+                <span class="tech">MySQL</span>
+                <span class="tech">JavaScript</span>
+                <span class="tech">HTML/CSS</span>
+              </div>
+            </div>
+            <div class="project-card__footer">
+              <a href="http://bibliotheque.gamer.gd" target="_blank" class="btn btn-accent btn-sm">Voir le projet <i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </article>
+
+          <!-- Calculateur -->
+          <article class="project-card reveal">
+            <div class="project-card__body">
+              <div class="project-icon"><i class="fas fa-calculator"></i></div>
+              <h3>Calculateur de prêt hypothécaire</h3>
+              <p>Outil de calcul interactif pour simuler des prêts immobiliers avec mensualités, taux et durée configurables.</p>
+              <div class="tech-stack">
+                <span class="tech">HTML</span>
+                <span class="tech">CSS</span>
+                <span class="tech">JavaScript</span>
+              </div>
+            </div>
+            <div class="project-card__footer">
+              <a href="projets/Calculateur_de_pret_hypothecaire.html" class="btn btn-outline btn-sm">Voir <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Aim Trainer -->
+          <article class="project-card reveal">
+            <div class="project-card__body">
+              <div class="project-icon"><i class="fas fa-bullseye"></i></div>
+              <h3>Aim Trainer</h3>
+              <p>Mini-jeu de réflexe et de précision pour entraîner son temps de réaction. Score en temps réel et chronomètre.</p>
+              <div class="tech-stack">
+                <span class="tech">HTML</span>
+                <span class="tech">CSS</span>
+                <span class="tech">JavaScript</span>
+              </div>
+            </div>
+            <div class="project-card__footer">
+              <a href="projets/mini_jeu_de_reflexe_et_de_precision.html" class="btn btn-outline btn-sm">Voir <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+          <!-- Memory Match -->
+          <article class="project-card reveal">
+            <div class="project-card__body">
+              <div class="project-icon"><i class="fas fa-clone"></i></div>
+              <h3>Memory Match</h3>
+              <p>Jeu de cartes à retourner pour tester et améliorer la mémoire visuelle. Animation fluide et suivi des paires trouvées.</p>
+              <div class="tech-stack">
+                <span class="tech">HTML</span>
+                <span class="tech">CSS</span>
+                <span class="tech">JavaScript</span>
+              </div>
+            </div>
+            <div class="project-card__footer">
+              <a href="projets/mini_jeu_de_carte_a_retourner.html" class="btn btn-outline btn-sm">Voir <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== COMPÉTENCES ===== -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title center">Compétences</h2>
+
+        <div class="skills-grid">
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-icon"><i class="fas fa-desktop"></i></div>
+            <h3>Front-end</h3>
+            <div class="skill-item">
+              <div class="skill-info"><span>HTML5</span><span class="skill-pct">75%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>CSS3</span><span class="skill-pct">70%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="70"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>JavaScript (DOM & API)</span><span class="skill-pct">60%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="60"></div></div>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-icon"><i class="fas fa-server"></i></div>
+            <h3>Back-end</h3>
+            <div class="skill-item">
+              <div class="skill-info"><span>PHP</span><span class="skill-pct">55%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="55"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>MySQL</span><span class="skill-pct">55%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="55"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>API REST</span><span class="skill-pct">50%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="50"></div></div>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-icon"><i class="fas fa-tools"></i></div>
+            <h3>Outils & CMS</h3>
+            <div class="skill-item">
+              <div class="skill-info"><span>WordPress</span><span class="skill-pct">60%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="60"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>VS Code</span><span class="skill-pct">75%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Git / GitHub</span><span class="skill-pct">50%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="50"></div></div>
+            </div>
+          </div>
+
+          <div class="skill-category reveal">
+            <div class="skill-cat-icon"><i class="fas fa-brain"></i></div>
+            <h3>Soft Skills</h3>
+            <div class="skill-item">
+              <div class="skill-info"><span>Résolution de problèmes</span><span class="skill-pct">75%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="75"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Adaptabilité</span><span class="skill-pct">80%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="80"></div></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-info"><span>Gestion de projet</span><span class="skill-pct">65%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-w="65"></div></div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Tech icons row -->
+        <div class="tech-icons reveal">
+          <div class="tech-icon-item"><i class="fab fa-html5"></i><span>HTML5</span></div>
+          <div class="tech-icon-item"><i class="fab fa-css3-alt"></i><span>CSS3</span></div>
+          <div class="tech-icon-item"><i class="fab fa-js"></i><span>JavaScript</span></div>
+          <div class="tech-icon-item"><i class="fab fa-php"></i><span>PHP</span></div>
+          <div class="tech-icon-item"><i class="fas fa-database"></i><span>MySQL</span></div>
+          <div class="tech-icon-item"><i class="fab fa-wordpress"></i><span>WordPress</span></div>
+          <div class="tech-icon-item"><i class="fab fa-github"></i><span>GitHub</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" class="section section-dark">
+      <div class="container contact">
+        <div class="contact__info reveal">
+          <p class="section-label">Travaillons ensemble</p>
+          <h2 class="section-title">Contactez-moi</h2>
+          <p class="contact__desc">Vous avez un projet web, une idée à développer ou simplement envie d'échanger ? N'hésitez pas à me contacter !</p>
+          <div class="contact__links">
+            <a href="mailto:vivienagbo56@gmail.com" class="contact-link">
+              <i class="fas fa-envelope"></i>
+              <span>vivienagbo56@gmail.com</span>
+            </a>
+            <a href="https://github.com/JusteAgbo05" target="_blank" class="contact-link">
+              <i class="fab fa-github"></i>
+              <span>github.com/JusteAgbo05</span>
+            </a>
+            <a href="https://linkedin.com/in/juste-agbo" target="_blank" class="contact-link">
+              <i class="fab fa-linkedin"></i>
+              <span>linkedin.com/in/juste-agbo</span>
+            </a>
+          </div>
+        </div>
+        <form id="contactForm" class="contact__form reveal-right" novalidate>
+          <div class="form-row">
+            <label>Prénom
+              <input type="text" name="prenom" id="f-prenom" required placeholder="Jean"/>
+            </label>
+            <label>Nom
+              <input type="text" name="nom" id="f-nom" required placeholder="David"/>
+            </label>
+          </div>
+          <label>Votre email
+            <input type="email" name="email" id="f-email" required placeholder="jean.david@example.com"/>
+          </label>
+          <label>Sujet
+            <input type="text" name="sujet" id="f-sujet" required placeholder="Développement d'une application web de..."/>
+          </label>
+          <label>Message
+            <textarea name="message" id="f-message" rows="5" required placeholder="Décrivez votre projet..."></textarea>
+          </label>
+          <button type="submit" class="btn btn-accent" id="submitBtn">
+            <span id="btnText">Envoyer le message</span>
+            <i class="fas fa-paper-plane" id="btnIcon"></i>
+            <i class="fas fa-spinner fa-spin" id="btnSpinner" style="display:none"></i>
+          </button>
+          <p class="form-feedback" id="formFeedback"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="brand">JA<span class="dot">.</span></div>
+      <small>Conçu & développé par <span class="accent">Juste AGBO</span> — 2025</small>
+      <div class="footer__socials">
+        <a href="https://github.com/JusteAgbo05" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/juste-agbo" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:vivienagbo56@gmail.com"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

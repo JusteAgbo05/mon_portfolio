@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="author" content="AGBO Juste">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Calculateur de prêt hypothécaire — Juste AGBO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="projet-style.css">
+  <style>
+    .calc-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 720px) { .calc-layout { grid-template-columns: 1fr; } }
+
+    .field { margin-bottom: 22px; }
+    .field label { display: block; font-size: .88rem; font-weight: 500; color: var(--text-muted); margin-bottom: 8px; }
+    .field label i { margin-right: 6px; color: var(--accent); }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+
+    /* Panneau résultat */
+    .result-card {
+      background: linear-gradient(135deg, #0f1f35 0%, #0a1628 100%);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: var(--radius-lg); padding: 32px;
+      display: flex; flex-direction: column; gap: 24px;
+      min-height: 100%;
+    }
+    .result-main {
+      text-align: center; padding: 28px 20px;
+      background: rgba(56,189,248,0.06);
+      border: 1px solid rgba(56,189,248,0.15);
+      border-radius: 14px;
+    }
+    .result-main .lbl { font-size: .78rem; color: var(--text-muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+    .result-main .amount {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--accent); line-height: 1;
+    }
+    .result-main .currency { font-size: .9rem; color: var(--text-muted); margin-top: 8px; }
+
+    .result-rows { display: flex; flex-direction: column; gap: 10px; }
+    .result-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px;
+    }
+    .result-row .rl { color: var(--text-muted); font-size: .88rem; }
+    .result-row .rl i { margin-right: 6px; color: var(--accent); opacity: .7; }
+    .result-row .rv { font-weight: 700; color: var(--text); font-size: .92rem; }
+    .result-row.hi .rv { color: var(--accent); }
+
+    .formula {
+      font-size: .8rem; color: var(--text-muted); line-height: 1.8;
+      padding: 14px 16px; border-left: 3px solid rgba(56,189,248,0.3);
+      border-radius: 0 8px 8px 0;
+      background: rgba(255,255,255,0.02);
+    }
+    .formula code { color: var(--accent-3); }
+
+    .placeholder {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 14px; text-align: center;
+      padding: 40px 24px; color: var(--text-muted);
+    }
+    .placeholder i { font-size: 2.8rem; color: rgba(56,189,248,0.2); }
+    .placeholder p { font-size: .9rem; }
+
+    #error-msg { color: var(--red); font-size: .88rem; margin-top: 12px; min-height: 20px; }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow-1"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../index.html" class="brand">JA<span>.</span></a>
+      <a href="../index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Retour au portfolio</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="page-header">
+      <span class="page-label"><i class="fas fa-calculator"></i> Projet · HTML / CSS / JS</span>
+      <h1 class="page-title">Calculateur de prêt hypothécaire 💸</h1>
+      <p class="page-desc">Simulez vos mensualités, le coût total et les intérêts de votre emprunt immobilier.</p>
+    </div>
+
+    <div class="calc-layout">
+
+      <!-- Formulaire -->
+      <div class="card">
+        <form id="loan-form" novalidate>
+          <div class="field">
+            <label for="principal"><i class="fas fa-coins"></i> Montant du prêt (FCFA)</label>
+            <input id="principal" type="number" step="0.01" min="0" placeholder="Ex : 15 000 000" required>
+          </div>
+          <div class="field">
+            <label for="annual"><i class="fas fa-percent"></i> Taux d'intérêt annuel (%)</label>
+            <input id="annual" type="number" step="0.01" min="0" max="100" placeholder="Ex : 6" required>
+          </div>
+          <div class="field">
+            <label for="years"><i class="fas fa-calendar-alt"></i> Durée (années)</label>
+            <input id="years" type="number" step="1" min="1" placeholder="Ex : 20" required>
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn btn-accent"><i class="fas fa-calculator"></i> Calculer</button>
+            <button type="reset" id="reset-btn" class="btn btn-ghost"><i class="fas fa-redo"></i> Réinitialiser</button>
+          </div>
+          <p id="error-msg"></p>
+        </form>
+      </div>
+
+      <!-- Résultat -->
+      <div class="result-card">
+        <div class="placeholder" id="placeholder">
+          <i class="fas fa-chart-line"></i>
+          <p>Remplissez le formulaire et cliquez sur <strong style="color:var(--accent)">Calculer</strong> pour voir vos résultats.</p>
+        </div>
+        <div id="result-content" style="display:none; flex-direction:column; gap:20px;">
+          <div class="result-main">
+            <div class="lbl">Mensualité estimée</div>
+            <div class="amount" id="monthly">—</div>
+            <div class="currency">FCFA / mois</div>
+          </div>
+          <div class="result-rows">
+            <div class="result-row">
+              <span class="rl"><i class="fas fa-sigma"></i>Total remboursé</span>
+              <span class="rv" id="total">—</span>
+            </div>
+            <div class="result-row hi">
+              <span class="rl"><i class="fas fa-fire"></i>Dont intérêts</span>
+              <span class="rv" id="interest">—</span>
+            </div>
+            <div class="result-row">
+              <span class="rl"><i class="fas fa-hashtag"></i>Nombre de mensualités</span>
+              <span class="rv" id="nb-months">—</span>
+            </div>
+          </div>
+          <div class="formula">
+            <strong>Formule appliquée :</strong><br>
+            <code>M = P × [ r × (1+r)<sup>n</sup> ] / [ (1+r)<sup>n</sup> − 1 ]</code><br>
+            avec <code>r</code> = taux mensuel et <code>n</code> = nombre de mensualités
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <small>Projet de <span class="accent">Juste AGBO</span> — HTML · CSS · JavaScript</small>
+      <small>Tous droits réservés — 2025</small>
+    </div>
+  </footer>
+
+  <script>
+    const form        = document.getElementById('loan-form');
+    const errMsg      = document.getElementById('error-msg');
+    const placeholder = document.getElementById('placeholder');
+    const resultBox   = document.getElementById('result-content');
+
+    function fmt(x) {
+      return new Intl.NumberFormat('fr-FR', { minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(Math.round(x));
+    }
+
+    function calcMensualite(P, annualPct, years) {
+      const n = Math.round(years * 12);
+      const r = (annualPct / 100) / 12;
+      const M = r === 0 ? P / n : P * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+      return { M, n };
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      errMsg.textContent = '';
+
+      const P      = parseFloat(document.getElementById('principal').value);
+      const annual = parseFloat(document.getElementById('annual').value);
+      const years  = parseFloat(document.getElementById('years').value);
+
+      if (!P || P <= 0)                              return errMsg.textContent = '⚠ Le montant doit être positif.';
+      if (isNaN(annual) || annual < 0 || annual > 100) return errMsg.textContent = '⚠ Taux invalide (0–100 %).';
+      if (!years || years <= 0)                       return errMsg.textContent = '⚠ La durée doit être supérieure à 0.';
+
+      const { M, n } = calcMensualite(P, annual, years);
+      const total    = M * n;
+      const interest = total - P;
+
+      document.getElementById('monthly').textContent  = fmt(M);
+      document.getElementById('total').textContent    = fmt(total) + ' FCFA';
+      document.getElementById('interest').textContent = fmt(interest) + ' FCFA';
+      document.getElementById('nb-months').textContent = n + ' mois';
+
+      placeholder.style.display   = 'none';
+      resultBox.style.display     = 'flex';
+    });
+
+    document.getElementById('reset-btn').addEventListener('click', () => {
+      errMsg.textContent         = '';
+      placeholder.style.display  = 'flex';
+      resultBox.style.display    = 'none';
+    });
+  </script>
+</body>
+</html>
