@@ -2,7 +2,7 @@
 
 Portfolio personnel développé en HTML, CSS et JavaScript.
 
-🔗 **Voir le site en ligne** : [justeagbo05.github.io](https://justeagbo05.github.io)
+🔗 **Voir le site en ligne** : [justeagbo05.github](https://justeagbo05.github.io/mon_portfolio/)
 
 ---
 
