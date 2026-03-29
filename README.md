@@ -44,7 +44,7 @@ portfolio_v2/
 ##  Contact
 
 - 📧 vivienagbo56@gmail.com
-- 🔗 [LinkedIn](https://linkedin.com/in/juste-agbo)
+- 🔗 [LinkedIn](https://linkedin.com/in/juste-agbo-922154328/)
 
 ---
 
